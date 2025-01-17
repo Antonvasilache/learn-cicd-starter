@@ -7,17 +7,17 @@ import (
 	"github.com/bootdotdev/learn-cicd-starter/internal/auth"
 )
 
-func TestGetAPIKey(t *testing.T){
+func TestGetAPIKey(t *testing.T) {
 	tests := []struct {
-		name			string
-		headers			http.Header
-		expectedKey 	string
-		expectedError 	bool
+		name          string
+		headers       http.Header
+		expectedKey   string
+		expectedError bool
 	}{
 		{
-			name: "No authorization header",
-			headers: http.Header{},
-			expectedKey: "",
+			name:          "No authorization header",
+			headers:       http.Header{},
+			expectedKey:   "",
 			expectedError: true,
 		},
 		{
@@ -25,7 +25,7 @@ func TestGetAPIKey(t *testing.T){
 			headers: http.Header{
 				"Authorization": []string{"Invalid format"},
 			},
-			expectedKey: "",
+			expectedKey:   "",
 			expectedError: true,
 		},
 		{
@@ -33,7 +33,7 @@ func TestGetAPIKey(t *testing.T){
 			headers: http.Header{
 				"Authorization": []string{"ApiKey key123"},
 			},
-			expectedKey: "key123",
+			expectedKey:   "key123",
 			expectedError: false,
 		},
 	}
